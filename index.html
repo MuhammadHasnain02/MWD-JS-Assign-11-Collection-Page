@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Collection Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+</head>
+<body>
+    
+<div class="grid grid-cols-12 gap-3">
+
+    <!-- Left Line -->
+    <div class="col-span-2 text-white pt-2 pl-1 space-y-2">
+        
+        <div class="bg-[#5b7b7a] flex flex-col items-start px-4 py-1 rounded-md font-bold" id="categCards">
+
+            <h3 class="py-2">Category Filter</h3>
+
+        </div>
+
+        <div class="bg-[#5b7b7a] px-4 py-2 rounded-md">
+
+            <h3 class="font-bold">Pricing Filter</h3>
+            <div class="pt-2">
+                <input type="range" class="w-full" id="priceSlider">
+            </div>
+            <div class="flex justify-between">
+                <p id="minValue">--</p>
+                <p id="maxValue">--</p>
+            </div>
+        </div>
+
+        <div class="bg-[#5b7b7a] px-4 py-3 space-y-2 rounded-md">
+
+            <h3 class="text-[17px] font-bold mb-1">Rating Filter</h3>
+
+            <div class="flex flex-col" id="ratingCards">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Right Line -->
+    <div class="col-span-10 pt-2">
+
+        <!-- Top Bar -->
+        <div class="grid grid-cols-12">
+
+            <!-- All Funtionality Small Cards -->
+            <div class="col-span-9 flex items-center" >
+
+                <div>
+                    <p class="">Filter By :</p>
+                </div>
+                <div class="flex flex-row" id="allCategFiltLine">
+
+                </div>
+                <div class="flex flex-row" id="allRatFiltLine">
+
+                </div>
+
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="col-span-3 flex justify-center" id="sortDropdown">
+                <select id="sortDropdown" class="border-[2px] rounded-md w-45 h-10 text-center font-semibold hover:cursor-pointer">
+                    <option selected disabled>Select Sorting</option>
+                    <option value="ratLowToHigh">Rating Low to High</option>
+                    <option value="ratHighToLow">Rating High to Low</option>
+                    <option value="pricLowToHigh">Price Low to High</option>
+                    <option value="pricHighToLow">Price High to Low</option>
+                </select>
+            </div>
+            
+        </div>
+
+        <hr class="mb-4">
+        
+        <!-- Cards -->
+        <div class="grid grid-cols-12 gap-3" id="prodCards">
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+<script src="app.js"></script>
+</html>
