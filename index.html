@@ -6,7 +6,6 @@
     <title>Website Collection Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 </head>
 <body>
     
@@ -15,13 +14,13 @@
     <!-- Left Line -->
     <div class="col-span-2 text-white pt-2 pl-1 space-y-2">
         
-        <div class="bg-[#346866] flex flex-col items-start px-4 py-1 rounded-md font-bold" id="categCards">
+        <div class="bg-[#5b7b7a] flex flex-col items-start px-4 py-1 rounded-md font-bold" id="categCards">
 
             <h3 class="py-2">Category Filter</h3>
 
         </div>
 
-        <div class="bg-[#346866] px-4 py-2 rounded-md">
+        <div class="bg-[#5b7b7a] px-4 py-2 rounded-md">
 
             <h3 class="font-bold">Pricing Filter</h3>
             <div class="pt-2">
@@ -33,7 +32,7 @@
             </div>
         </div>
 
-        <div class="bg-[#346866] px-4 py-3 space-y-2 rounded-md">
+        <div class="bg-[#5b7b7a] px-4 py-3 space-y-2 rounded-md">
 
             <h3 class="text-[17px] font-bold mb-1">Rating Filter</h3>
 
@@ -46,7 +45,7 @@
     </div>
 
     <!-- Right Line -->
-    <div class="col-span-10 pt-2">
+    <div class="col-span-10 mb-2">
 
         <!-- Top Bar -->
         <div class="grid grid-cols-12">
@@ -57,20 +56,19 @@
                 <div>
                     <p class="">Filter By :</p>
                 </div>
-                <div id="allFiltLine" class="flex flex-row">
-                    <div class="flex flex-row" id="allCategFiltLine">
+                <div class="flex flex-row" id="allCategFiltLine">
 
-                    </div>
-                    <div class="flex flex-row" id="allRangFiltLine">
-
-                    </div>
-                    <div class="flex flex-row" id="allRatFiltLine">
-
-                    </div>
-                    <div class="flex flex-row" id="clearAllBtnDiv">
-
-                    </div>
                 </div>
+                <div class="flex flex-row" id="allRatFiltLine">
+
+                </div>
+                <div class="flex flex-row" id="allRangFiltLine">
+
+                </div>
+                <div class="flex flex-row" id="clearAllBtnDiv">
+
+                </div>
+                
             </div>
 
             <!-- Sort Dropdown -->
@@ -91,31 +89,28 @@
         <!-- Cards -->
         <div class="grid grid-cols-12 gap-3" id="prodCards">
             
-
         </div>
 
-        <!-- Pagination Work -->
-        <!-- <div class="flex justify-center mx-4 my-4">
-
-            <div class="flex items-center justify-center space-x-2 border rounded-md px-2 py-1">
-                <button class="flex items-center px-3 py-1 text-gray-500" disabled>
-                    ‹ Previous
-                </button>
-      
-                <div>
-                    <button class="px-3 py-1 rounded">1</button>
-                    <button class="px-3 py-1 rounded">2</button>
-                    <button class="px-3 py-1 rounded">...</button>
-                    <button class="px-3 py-1 rounded">10</button>
+        <!-- Pagination Buttons -->
+        <div class="flex justify-center my-8">
+            <div class="text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
+  
+                <button class="flex flex-row items-center hover:cursor-pointer">‹ Previous</button>
+                <div id="pagination" class="flex justify-center">
+                    <button onclick="changePage()"
+                    class="px-5 py-3 m-0 hover:cursor-pointer">1</button>
+                    <button onclick="changePage()"
+                    class="px-5 py-3 m-0 hover:cursor-pointer">2</button>
+                    <button onclick="changePage()"
+                    class="px-5 py-3 flex flex-col justify-center hover:cursor-pointer">...</button>
+                    <button onclick="changePage()"
+                    class="px-5 py-3 m-0 hover:cursor-pointer">10</button>
                 </div>
-      
-                <button class="flex items-center px-3 py-1 text-gray-500">
-                    Next ›
-                </button>
+                <button class="flex flex-row items-center hover:cursor-pointer">Next ›</button>
+
             </div>
 
-        </div> -->
-        
+        </div>
 
     </div>
 
