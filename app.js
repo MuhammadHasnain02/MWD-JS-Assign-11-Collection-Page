@@ -39,51 +39,150 @@ let products = [
       category: "Burger",
       rating: 2,
     },
-    {
-      id: 5,
-      image: "Images/shawarma.jpg",
-      title: "Shawarma 2",
-      description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
-      price: 500,
-      category: "Shawarma",
-      rating: 1,
-    },
-    {
-      id: 6,
-      image: "Images/piz.jpg",
-      title: "Pizza 2",
-      description: "Crispy zinger with crispy rolled into paratha",
-      price: 600,
-      category: "Pizza",
-      rating: 5,
-    },
-    {
-      id: 7,
-      image: "Images/burger.png",
-      title: "Burger 3",
-      description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
-      price: 700,
-      category: "Burger",
-      rating: 4,
-    },
-    {
-      id: 8,
-      image: "Images/shawarma.jpg",
-      title: "Shawarma 3",
-      description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
-      price: 800,
-      category: "Shawarma",
-      rating: 3,
-    },
-    {
-      id: 9,
-      image: "Images/piz.jpg",
-      title: "Pizza 3",
-      description: "Crispy zinger with crispy rolled into paratha",
-      price: 900,
-      category: "Pizza",
-      rating: 2,
-    }
+    // {
+    //   id: 5,
+    //   image: "Images/shawarma.jpg",
+    //   title: "Shawarma 2",
+    //   description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
+    //   price: 500,
+    //   category: "Shawarma",
+    //   rating: 1,
+    // },
+    // {
+    //   id: 6,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 2",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 600,
+    //   category: "Pizza",
+    //   rating: 5,
+    // },
+    // {
+    //   id: 7,
+    //   image: "Images/burger.png",
+    //   title: "Burger 3",
+    //   description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
+    //   price: 700,
+    //   category: "Burger",
+    //   rating: 4,
+    // },
+    // {
+    //   id: 8,
+    //   image: "Images/shawarma.jpg",
+    //   title: "Shawarma 3",
+    //   description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
+    //   price: 800,
+    //   category: "Shawarma",
+    //   rating: 3,
+    // },
+    // {
+    //   id: 9,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 10,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 11,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 12,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 13,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 14,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 15,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 16,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 17,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 18,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 19,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // },
+    // {
+    //   id: 20,
+    //   image: "Images/piz.jpg",
+    //   title: "Pizza 3",
+    //   description: "Crispy zinger with crispy rolled into paratha",
+    //   price: 900,
+    //   category: "Pizza",
+    //   rating: 2,
+    // }
   ];
   
   // ======================= Find Categories in Data =======================
@@ -365,12 +464,12 @@ let products = [
   
       productCont.innerHTML +=
       `
-      <div class="col-span-3 bg-[#5b7b7a] rounded-2xl hover:cursor-pointer">
+      <div class="col-span-3 bg-[#346866] rounded-2xl hover:cursor-pointer">
   
             <div>
                 <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
             </div>
-            <div class="bg-[#5b7b7a] text-white px-3 py-3 rounded-b-2xl">
+            <div class="bg-[#346866] text-white px-3 py-3 rounded-b-2xl">
                 <p class="font-medium text-[25px]">${prod.title}</p>
                   <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2  items-center">
                   ${
@@ -426,12 +525,12 @@ let products = [
     cardDiv.innerHTML = visibProducts
     .map((prod) =>
       `
-        <div class="col-span-3 bg-[#5b7b7a] rounded-2xl hover:cursor-pointer">
+        <div class="col-span-3 bg-[#346866] rounded-2xl hover:cursor-pointer">
   
             <div>
                 <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
             </div>
-            <div class="bg-[#5b7b7a] text-white px-3 py-3 rounded-b-2xl">
+            <div class="bg-[#346866] text-white px-3 py-3 rounded-b-2xl">
                 <p class="font-medium text-[25px]">${prod.title}</p>
                   <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2  items-center">
                   ${
@@ -490,7 +589,7 @@ let products = [
   let clearAllBtn = () => {
 
     let clearAllBtnDiv = document.getElementById("clearAllBtnDiv")
-    clearAllBtnDiv.innerHTML +=
+    clearAllBtnDiv.innerHTML =
     `
     <div onclick="clearAllFilters()" class="flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
       <p class="">Clear All</p>
@@ -525,3 +624,7 @@ let products = [
     mapProdCards();
 
   }
+
+  // ======================= Pagination Work =======================
+
+  
