@@ -487,6 +487,8 @@ let products = [
   
   })
 
+  // ======================= Clear Button =======================
+
   let clearAllBtn = () => {
 
     let clearAllBtnDiv = document.getElementById("clearAllBtnDiv")
@@ -523,9 +525,6 @@ let products = [
 
     // Show all products again
     mapProdCards();
-
-    // Reset pagination
-    currentPage = 1;
 
   }
   
