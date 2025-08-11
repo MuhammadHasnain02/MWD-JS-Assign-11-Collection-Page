@@ -3,7 +3,7 @@
 let products = [
   {
     id: 1,
-    image: "Images/burger.png",
+    image: "Images/burger.webp",
     title: "Burger 1",
     description:
       "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
@@ -13,7 +13,7 @@ let products = [
   },
   {
     id: 2,
-    image: "Images/shawarma.jpg",
+    image: "Images/shawarma.webp",
     title: "Shawarma1",
     description:
       "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
@@ -23,7 +23,7 @@ let products = [
   },
   {
     id: 3,
-    image: "Images/piz.jpg",
+    image: "Images/piz.webp",
     title: "Pizza 1",
     description: "Crispy zinger with crispy rolled into paratha",
     price: 300,
@@ -32,7 +32,7 @@ let products = [
   },
   {
     id: 4,
-    image: "Images/burger.png",
+    image: "Images/burger.webp",
     title: "Burger 2",
     description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
     price: 400,
@@ -41,7 +41,7 @@ let products = [
   },
   {
     id: 5,
-    image: "Images/shawarma.jpg",
+    image: "Images/shawarma.webp",
     title: "Shawarma 2",
     description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
     price: 500,
@@ -50,7 +50,7 @@ let products = [
   },
   {
     id: 6,
-    image: "Images/piz.jpg",
+    image: "Images/piz.webp",
     title: "Pizza 2",
     description: "Crispy zinger with crispy rolled into paratha",
     price: 600,
@@ -59,7 +59,7 @@ let products = [
   },
   {
     id: 7,
-    image: "Images/burger.png",
+    image: "Images/burger.webp",
     title: "Burger 3",
     description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
     price: 700,
@@ -68,7 +68,7 @@ let products = [
   },
   {
     id: 8,
-    image: "Images/shawarma.jpg",
+    image: "Images/shawarma.webp",
     title: "Shawarma 3",
     description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
     price: 800,
@@ -417,14 +417,14 @@ let mapProdCards = () => {
   cardDiv.innerHTML = visibProducts
   .map((prod) =>
     `
-      <div class="col-span-3 bg-[#5b7b7a] rounded-2xl hover:cursor-pointer">
+      <div class="col-span-4 border border-gray-200 rounded-2xl hover:cursor-pointer">
 
           <div>
               <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
           </div>
-          <div class="bg-[#5b7b7a] text-white px-3 py-3 rounded-b-2xl">
+          <div class="bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
               <p class="font-medium text-[25px]">${prod.title}</p>
-                <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2  items-center">
+                <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
                 ${
                   Array(5).fill()
                   .map((_ , i) => 
@@ -483,12 +483,19 @@ sortDropdown.addEventListener("change" , (e) => {
 let clearAllBtnDiv = document.getElementById("clearAllBtnDiv")
 
 let mapClearBtn = () => {
-clearAllBtnDiv.innerHTML =
-  `
-  <div class="flex flex-row items-center px-3 py-1 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
-    <p class="" onclick="clearAllFilt()">Clear All</p>
-  </div>
-  `
+
+  if (checked === true) {
+    clearAllBtnDiv.innerHTML =
+    `
+    <div class="flex flex-row items-center px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
+      <p class="" onclick="clearAllFilt()">Clear All</p>
+    </div>
+    `
+  }
+  else {
+    clearAllBtnDiv.innerHTML = ""
+  }
+
 }
 
 // ======================= Clear All Button on top =======================

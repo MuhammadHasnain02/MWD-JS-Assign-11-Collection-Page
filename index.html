@@ -1,18 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Collection Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body>
+    <title>Web Collection Page</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="Screenshot 2025-08-02 123534.png" type="image/x-icon">
     
-<div class="grid grid-cols-12 gap-3">
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    
+    <!-- Tailwind Css -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- Left Line -->
-    <div class="col-span-2 text-white pt-2 pl-1 space-y-2">
+    <!-- Google Font Links -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <style>
+        .montserrat-uniquifier{
+            font-family: "Montserrat";
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+        body{
+            font-family: "Montserrat";
+        }
+        .navbar{
+            box-shadow: 0px 0px 20px rgb(187, 187, 187);
+        }
+        .navInp>::placeholder{
+            font-weight: 500;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav class="navbar bg-gray-100">
+
+        <!-- Top Nav -->
+        <div class="flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
+            <div class="flex flex-row items-center hover:cursor-pointer">
+                <i class="fa-solid fa-location-crosshairs text-gray-300 pr-6"></i>
+                <a href="#" class="text-[15px] text-gray-200 hover:text-slate-300">Add Location</a>
+            </div>
+            <div class="flex flex-row items-center hover:cursor-pointer">
+                <i class="fa-solid fa-phone text-gray-300 pr-5"></i>
+                <a href="#" class="text-[15px] text-gray-200 hover:text-slate-300">0300-222-333-4</a>
+            </div>
+            <div class="flex flex-row items-center hover:cursor-pointer">
+                <i class="fa-regular fa-circle-user text-gray-300 pr-6"></i>
+                <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pr-2 border-r-1">LOGIN</a>
+                <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pl-2">REGISTER</a>
+            </div>
+        </div>
+
+        <!-- Search Nav -->
+        <div class="flex flex-row justify-evenly py-5">
+            <div class="col-span-2 flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-90">
+                <a href="index.html"><i class="fa-solid fa-utensils text-[24px]" style="color: #556155;"></i></a>
+                <p class="pl-2 text-[20px]">FOOD</p>
+            </div>
+            <div class="col-span-6 text-center navInp">
+                <input type="search" placeholder="Search the Store" 
+                class="shadow-md rounded-3xl w-[650px] p-[10px] pl-5 font-sans bg-[#e7e7e7]">
+            </div>
+            <div class="flex flex-row items-center hover:cursor-pointer">
+                <i class="fa-solid fa-cart-shopping text-[25px]" style="color: #556155;"></i>
+            </div>
+        </div>
+        
+    </nav>
+
+    <section>
+
+        <div class="grid grid-cols-12 gap-3">
+
+            <!-- Left Line -->
+            <div class="col-span-2 text-white pt-2 pl-1 space-y-2">
         
         <div class="bg-[#5b7b7a] flex flex-col items-start px-4 py-1 rounded-md font-bold" id="categCards">
 
@@ -42,10 +112,10 @@
 
         </div>
 
-    </div>
+            </div>
 
-    <!-- Right Line -->
-    <div class="col-span-10 mb-2">
+            <!-- Right Line -->
+            <div class="col-span-10 mb-2">
 
         <!-- Top Bar -->
         <div class="grid grid-cols-12">
@@ -87,7 +157,7 @@
         <hr class="mb-4">
         
         <!-- Cards -->
-        <div class="grid grid-cols-12 gap-3" id="prodCards">
+        <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards">
             
         </div>
 
@@ -112,9 +182,11 @@
 
         </div>
 
-    </div>
+            </div>
 
-</div>
+        </div>
+
+    </section>
 
 </body>
 <script src="app.js"></script>
