@@ -17,7 +17,7 @@
     <!-- Google Font Links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 
     <style>
         .montserrat-uniquifier{
@@ -27,7 +27,7 @@
             font-style: normal;
         }
         body{
-            font-family: "Montserrat";
+            /* font-family: "Montserrat"; */
         }
         .navbar{
             box-shadow: 0px 0px 20px rgb(187, 187, 187);
@@ -35,16 +35,19 @@
         .navInp>::placeholder{
             font-weight: 500;
         }
+        /* font-[Montserrat] */
     </style>
 
 </head>
 
-<body>
-
-    <nav class="navbar bg-gray-100">
+<body class="h-screen flex flex-col">
+    
+    <!-- Navbar -->
+    <nav class="navbar bg-gray-100 fixed top-0 left-0 w-full z-10">
 
         <!-- Top Nav -->
         <div class="flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
+
             <div class="flex flex-row items-center hover:cursor-pointer">
                 <i class="fa-solid fa-location-crosshairs text-gray-300 pr-6"></i>
                 <a href="#" class="text-[15px] text-gray-200 hover:text-slate-300">Add Location</a>
@@ -58,10 +61,12 @@
                 <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pr-2 border-r-1">LOGIN</a>
                 <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pl-2">REGISTER</a>
             </div>
+
         </div>
 
         <!-- Search Nav -->
         <div class="flex flex-row justify-evenly py-5">
+
             <div class="col-span-2 flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-90">
                 <a href="index.html"><i class="fa-solid fa-utensils text-[24px]" style="color: #556155;"></i></a>
                 <p class="pl-2 text-[20px]">FOOD</p>
@@ -73,24 +78,22 @@
             <div class="flex flex-row items-center hover:cursor-pointer">
                 <i class="fa-solid fa-cart-shopping text-[25px]" style="color: #556155;"></i>
             </div>
+
         </div>
         
     </nav>
 
-    <section>
+    <!-- Section -->
+    <div class="grid grid-cols-12 gap-3 mt-42">
 
-        <div class="grid grid-cols-12 gap-3">
-
-            <!-- Left Line -->
-            <div class="col-span-2 text-white pt-2 pl-1 space-y-2">
+        <!-- Left Section -->
+        <div class="col-span-2 border h-140 py-2 rounded-xl border-gray-300">
         
-        <div class="bg-[#5b7b7a] flex flex-col items-start px-4 py-1 rounded-md font-bold" id="categCards">
-
+        <div class="text-black px-4 py-1 font-bold" id="categCards">
             <h3 class="py-2">Category Filter</h3>
-
         </div>
 
-        <div class="bg-[#5b7b7a] px-4 py-2 rounded-md">
+        <div class="text-black px-4 py-2">
 
             <h3 class="font-bold">Pricing Filter</h3>
             <div class="pt-2">
@@ -100,22 +103,20 @@
                 <p id="minValue">--</p>
                 <p id="maxValue">--</p>
             </div>
+
         </div>
 
-        <div class="bg-[#5b7b7a] px-4 py-3 space-y-2 rounded-md">
+        <div class="text-black px-4 py-3">
 
             <h3 class="text-[17px] font-bold mb-1">Rating Filter</h3>
-
-            <div class="flex flex-col" id="ratingCards">
-
-            </div>
+            <div class="flex flex-col" id="ratingCards"></div>
 
         </div>
 
-            </div>
+        </div>
 
-            <!-- Right Line -->
-            <div class="col-span-10 mb-2">
+        <!-- Right Section -->
+        <div class="col-span-10 mb-2">
 
         <!-- Top Bar -->
         <div class="grid grid-cols-12">
@@ -123,21 +124,11 @@
             <!-- All Funtionality Small Cards -->
             <div class="col-span-9 flex items-center" >
 
-                <div>
-                    <p class="">Filter By :</p>
-                </div>
-                <div class="flex flex-row" id="allCategFiltLine">
-
-                </div>
-                <div class="flex flex-row" id="allRatFiltLine">
-
-                </div>
-                <div class="flex flex-row" id="allRangFiltLine">
-
-                </div>
-                <div class="flex flex-row" id="clearAllBtnDiv">
-
-                </div>
+                <div><p class="">Filter By :</p></div>
+                <div class="flex flex-row" id="allCategFiltLine"></div>
+                <div class="flex flex-row" id="allRatFiltLine"></div>
+                <div class="flex flex-row" id="allRangFiltLine"></div>
+                <div class="flex flex-row" id="clearAllBtnDiv"></div>
                 
             </div>
 
@@ -157,9 +148,7 @@
         <hr class="mb-4">
         
         <!-- Cards -->
-        <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards">
-            
-        </div>
+        <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
 
         <!-- Pagination Buttons -->
         <div class="flex justify-center my-8">
@@ -182,12 +171,11 @@
 
         </div>
 
-            </div>
-
         </div>
 
-    </section>
+    </div>
 
 </body>
+
 <script src="app.js"></script>
 </html>
