@@ -1,6 +1,7 @@
 // ======================= PRODUCTS DATA =======================
 
 let products = [
+    
   {
     id: 1,
     image: "Images/burger.webp",
@@ -74,7 +75,71 @@ let products = [
     price: 800,
     category: "Shawarma",
     rating: 3,
+  },
+  {
+    id: 9,
+    image: "Images/piz.webp",
+    title: "Pizza 3",
+    description: "Crispy zinger with crispy rolled into paratha",
+    price: 900,
+    category: "Pizza",
+    rating: 2,
+  },
+  {
+    id: 10,
+    image: "Images/burger.webp",
+    title: "Burger 4",
+    description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
+    price: 1000,
+    category: "Burger",
+    rating: 3,
+  },
+  {
+    id: 11,
+    image: "Images/shawarma.webp",
+    title: "Shawarma 4",
+    description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
+    price: 1100,
+    category: "Shawarma",
+    rating: 2,
+  },
+  {
+    id: 12,
+    image: "Images/piz.webp",
+    title: "Pizza 4",
+    description: "Crispy zinger with crispy rolled into paratha",
+    price: 1200,
+    category: "Pizza",
+    rating: 1,
+  },
+  {
+    id: 13,
+    image: "Images/burger.webp",
+    title: "Burger 5",
+    description: "Enjoy the crispy chiken fillet in a soft bun with spicy mayo and our signature sauce",
+    price: 1300,
+    category: "Burger",
+    rating: 1,
+  },
+  {
+    id: 14,
+    image: "Images/shawarma.webp",
+    title: "Shawarma 5",
+    description: "Aromatic arabian rice with 6 pacs of hot shots with KFC famous vietnamese sauce",
+    price: 1400,
+    category: "Shawarma",
+    rating: 5,
+  },
+  {
+    id: 15,
+    image: "Images/piz.webp",
+    title: "Pizza 5",
+    description: "Crispy zinger with crispy rolled into paratha",
+    price: 1500,
+    category: "Pizza",
+    rating: 4,
   }
+  
 ];
 
 // ======================= Find Categories in Data =======================
@@ -97,7 +162,7 @@ let mapCategTxt = () => {
     let categCards = document.getElementById("categCards")
     categCards.innerHTML +=
     `
-    <div class="flex flex-row space-y-3">
+    <div class="flex flex-row space-y-3 font-medium text-[15px]">
       <div><input type="checkbox" onchange="filterCategory('${categ}', this.checked)" class="checkCateg w-4 h-4 hover:cursor-pointer"></div>
       <label class="pl-2 hover:cursor-pointer">${categ}</label>
     </div>
@@ -121,6 +186,7 @@ let filterCategory = (category , isChecked) => {
   }
   else {
     selectedCateg = selectedCateg.filter((cat) => cat !== category);
+    checked = false
   }
   
   console.log("selectedCategory -->", selectedCateg);
@@ -164,12 +230,13 @@ let removeFiltCategOnTop = (category) => {
 
   })
   mapTopFiltCategCards()
-  mapProdCards();
+  mapProdCards()
+  
 }
 
 // ======================= Get Filter Product =======================
 
-let userSelectCateg = []
+// let userSelectCateg = []
 
 let getFilterProd = (data , selectedCategory , selectedRating , selectedRange) => {
 
@@ -180,7 +247,7 @@ let getFilterProd = (data , selectedCategory , selectedRating , selectedRange) =
 
     filtProducts = filtProducts.filter((product) => {
       let selCateg =  selectedCategory.includes(product.category)
-      userSelectCateg.push(selCateg)
+      // userSelectCateg.push(selCateg)
       return selCateg
     })
 
@@ -190,7 +257,7 @@ let getFilterProd = (data , selectedCategory , selectedRating , selectedRange) =
   if (selectedRat) {
 
     filtProducts = filtProducts.filter((product) => {
-      return product.rating === selectedRating
+      return product.rating === selectedRat
     })
   
   }
@@ -231,7 +298,7 @@ let mapRating = () => {
       .join("")
 
     }
-      <p class="flex items-end font-extralight pl-1 text-gray-300">${rat === 5 ? "5.0" : rat.toFixed(1) + " +"}</p>
+      <p class="flex items-end font-medium pl-1 text-gray-500">${rat === 5 ? "5.0" : rat.toFixed(1) + "+"}</p>
     </div>
     `
   )
@@ -271,6 +338,7 @@ let mapTopFiltRatCards = () => {
       </div>
     `
   }
+  mapClearBtn()
 }
 
 // ======================= Remove Filtered Rating on top =======================
@@ -281,6 +349,7 @@ let removeFiltRatOnTop = () => {
   allRatFiltLine.innerHTML = ""
   mapRating();
   mapProdCards()
+  // clearAllBtnDiv.innerHTML = ""
 
 }
 
@@ -317,9 +386,9 @@ slider.max = priceRange.max
 slider.value = priceRange.max
 
 slider.addEventListener("input", () => {
-
+  
   let selected = Number(slider.value);
-  // maxValue.textContent = selected;
+  maxValue.textContent = selected;
   
   // Find lower or equal price manually
   let targetPrice = 0;
@@ -341,6 +410,8 @@ slider.addEventListener("input", () => {
     </div>
   `
 
+  mapClearBtn()
+
   // Set Max Value
   maxValue.textContent = targetPrice
 
@@ -356,10 +427,11 @@ slider.addEventListener("input", () => {
 
     productCont.innerHTML +=
     `
-    <div class="col-span-3 bg-[#5b7b7a] rounded-2xl hover:cursor-pointer">
+      <div class="col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
 
           <div>
-              <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
+              <img src="${prod.image}"
+              class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
           </div>
           <div class="bg-[#5b7b7a] text-white px-3 py-3 rounded-b-2xl">
               <p class="font-medium text-[25px]">${prod.title}</p>
@@ -377,7 +449,7 @@ slider.addEventListener("input", () => {
                   )
                   .join("")
                 }                
-                <span class="text-white text-[15px] flex items-center mt-1">(${prod.rating})</span>
+                <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
                 </p>
               <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
               <div class="flex justify-between items-center">
@@ -408,8 +480,9 @@ let removeFiltRangOnTop = () => {
 
 // ======================= MAP PRODUCT CARDS =======================
 
-let mapProdCards = () => {
 
+let mapProdCards = () => {
+  
   let selectedRang = Number(slider.value);
   let visibProducts = getFilterProd(products , selectedCateg , selectedRat , selectedRang)
 
@@ -417,7 +490,7 @@ let mapProdCards = () => {
   cardDiv.innerHTML = visibProducts
   .map((prod) =>
     `
-      <div class="col-span-4 border border-gray-200 rounded-2xl hover:cursor-pointer">
+      <div class="col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
 
           <div>
               <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
@@ -438,7 +511,7 @@ let mapProdCards = () => {
                   )
                   .join("")
                 }                
-                <span class="text-white text-[15px] flex items-center mt-1">(${prod.rating})</span>
+                <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
                 </p>
               <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
               <div class="flex justify-between items-center">
@@ -483,17 +556,23 @@ sortDropdown.addEventListener("change" , (e) => {
 let clearAllBtnDiv = document.getElementById("clearAllBtnDiv")
 
 let mapClearBtn = () => {
+  let selectedRang = Number(slider.value);
 
-  if (checked === true) {
+  let categorySelected = selectedCateg.length > 0;
+  let rangeSelected = selectedRang !== null && selectedRang !== "";
+  let ratingSelected = selectedRat !== null && selectedRat !== "";
+  
+  if (categorySelected || rangeSelected || ratingSelected) {
     clearAllBtnDiv.innerHTML =
     `
-    <div class="flex flex-row items-center px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
-      <p class="" onclick="clearAllFilt()">Clear All</p>
+    <div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
+      <p class="" >Clear All</p>
     </div>
     `
+    checked = true
   }
   else {
-    clearAllBtnDiv.innerHTML = ""
+    checked = false
   }
 
 }
@@ -526,6 +605,7 @@ let clearAllFilt = () => {
   // Show all products
   mapProdCards();
 
+  // Clear Chips
   clearAllBtnDiv.innerHTML = ""
 
 }

@@ -40,10 +40,10 @@
 
 </head>
 
-<body class="h-screen flex flex-col">
+<body class="h-screen flex flex-col bg-gray-100">
     
     <!-- Navbar -->
-    <nav class="navbar bg-gray-100 fixed top-0 left-0 w-full z-10">
+    <nav class="navbar fixed top-0 left-0 w-full z-10">
 
         <!-- Top Nav -->
         <div class="flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Search Nav -->
-        <div class="flex flex-row justify-evenly py-5">
+        <div class="flex flex-row justify-evenly py-5 bg-white">
 
             <div class="col-span-2 flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-90">
                 <a href="index.html"><i class="fa-solid fa-utensils text-[24px]" style="color: #556155;"></i></a>
@@ -87,89 +87,89 @@
     <div class="grid grid-cols-12 gap-3 mt-42">
 
         <!-- Left Section -->
-        <div class="col-span-2 border h-140 py-2 rounded-xl border-gray-300">
+        <div class="col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
         
-        <div class="text-black px-4 py-1 font-bold" id="categCards">
-            <h3 class="py-2">Category Filter</h3>
-        </div>
-
-        <div class="text-black px-4 py-2">
-
-            <h3 class="font-bold">Pricing Filter</h3>
-            <div class="pt-2">
-                <input type="range" class="w-full" id="priceSlider">
-            </div>
-            <div class="flex justify-between">
-                <p id="minValue">--</p>
-                <p id="maxValue">--</p>
+            <div class="text-black px-4 py-2 border-b border-gray-300" id="categCards">
+                <h3 class="py-2 font-semibold">Category Filter</h3>
             </div>
 
-        </div>
+            <div class="text-black px-4 py-5 border-b border-gray-300">
 
-        <div class="text-black px-4 py-3">
+                <h3 class="font-semibold">Pricing Filter</h3>
+                <div class="pt-2">
+                    <input type="range" class="w-full" id="priceSlider">
+                </div>
+                <div class="flex justify-between">
+                    <p id="minValue">--</p>
+                    <p id="maxValue">--</p>
+                </div>
 
-            <h3 class="text-[17px] font-bold mb-1">Rating Filter</h3>
-            <div class="flex flex-col" id="ratingCards"></div>
+            </div>
 
-        </div>
+            <div class="text-black px-4 py-4">
+
+                <h3 class="text-[17px] font-semibold mb-1">Rating Filter</h3>
+                <div class="flex flex-col" id="ratingCards"></div>
+
+            </div>
 
         </div>
 
         <!-- Right Section -->
         <div class="col-span-10 mb-2">
 
-        <!-- Top Bar -->
-        <div class="grid grid-cols-12">
+            <!-- Top Bar -->
+            <div class="grid grid-cols-12">
 
-            <!-- All Funtionality Small Cards -->
-            <div class="col-span-9 flex items-center" >
+                <!-- All Funtionality Small Cards -->
+                <div class="col-span-9 flex items-center font-[Montserrat]">
 
-                <div><p class="">Filter By :</p></div>
-                <div class="flex flex-row" id="allCategFiltLine"></div>
-                <div class="flex flex-row" id="allRatFiltLine"></div>
-                <div class="flex flex-row" id="allRangFiltLine"></div>
-                <div class="flex flex-row" id="clearAllBtnDiv"></div>
+                    <div><p class="font-semibold text-[18px]">Filter By :</p></div>
+                    <div class="flex flex-row" id="allCategFiltLine"></div>
+                    <div class="flex flex-row" id="allRatFiltLine"></div>
+                    <div class="flex flex-row" id="allRangFiltLine"></div>
+                    <div class="flex flex-row" id="clearAllBtnDiv"></div>
+                    
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="col-span-3 flex justify-center" id="sortDropdown">
+                    <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-45 h-10 text-center font-semibold hover:cursor-pointer">
+                        <option class="" selected disabled>Select Sorting</option>
+                        <option value="ratLowToHigh">Rating Low to High</option>
+                        <option value="ratHighToLow">Rating High to Low</option>
+                        <option value="pricLowToHigh">Price Low to High</option>
+                        <option value="pricHighToLow">Price High to Low</option>
+                    </select>
+                </div>
                 
             </div>
 
-            <!-- Sort Dropdown -->
-            <div class="col-span-3 flex justify-center" id="sortDropdown">
-                <select id="sortDropdown" class="border-[2px] rounded-md w-45 h-10 text-center font-semibold hover:cursor-pointer">
-                    <option selected disabled>Select Sorting</option>
-                    <option value="ratLowToHigh">Rating Low to High</option>
-                    <option value="ratHighToLow">Rating High to Low</option>
-                    <option value="pricLowToHigh">Price Low to High</option>
-                    <option value="pricHighToLow">Price High to Low</option>
-                </select>
-            </div>
-            
-        </div>
-
-        <hr class="mb-4">
+            <hr class="mb-4">
         
-        <!-- Cards -->
-        <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
+            <!-- Cards -->
+            <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
 
-        <!-- Pagination Buttons -->
-        <div class="flex justify-center my-8">
-            <div class="text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
-  
-                <button class="flex flex-row items-center hover:cursor-pointer">‹ Previous</button>
-                <div id="pagination" class="flex justify-center">
-                    <button onclick="changePage()"
-                    class="px-5 py-3 m-0 hover:cursor-pointer">1</button>
-                    <button onclick="changePage()"
-                    class="px-5 py-3 m-0 hover:cursor-pointer">2</button>
-                    <button onclick="changePage()"
-                    class="px-5 py-3 flex flex-col justify-center hover:cursor-pointer">...</button>
-                    <button onclick="changePage()"
-                    class="px-5 py-3 m-0 hover:cursor-pointer">10</button>
+            <!-- Pagination Buttons -->
+            <div class="flex justify-center my-8">
+                <div class="text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
+    
+                    <button class="flex flex-row items-center hover:cursor-pointer">‹ Previous</button>
+                    <div id="pagination" class="flex justify-center">
+                        <button onclick="changePage()"
+                        class="px-5 py-3 m-0 hover:cursor-pointer">1</button>
+                        <button onclick="changePage()"
+                        class="px-5 py-3 m-0 hover:cursor-pointer">2</button>
+                        <button onclick="changePage()"
+                        class="px-5 py-3 flex flex-col justify-center hover:cursor-pointer">...</button>
+                        <button onclick="changePage()"
+                        class="px-5 py-3 m-0 hover:cursor-pointer">10</button>
+                    </div>
+                    <button class="flex flex-row items-center hover:cursor-pointer">Next ›</button>
+
                 </div>
-                <button class="flex flex-row items-center hover:cursor-pointer">Next ›</button>
 
             </div>
-
-        </div>
 
         </div>
 
