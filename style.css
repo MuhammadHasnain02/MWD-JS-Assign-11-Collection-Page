@@ -1,0 +1,91 @@
+.montserrat-uniquifier{
+    font-family: "Montserrat";
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+.navbar{
+    box-shadow: 0px 0px 20px rgb(187, 187, 187);
+}
+.navInp>::placeholder{
+    font-weight: 500;
+}
+
+/* // Screen Size 1400px check */
+@media (max-width: 1660px) {
+    
+}
+
+/* // Screen Size 1200px check */
+@media (max-width: 1399px) {
+    
+}
+
+/* // Screen Size 992px check */
+@media (max-width: 1199px) {
+    
+}
+
+/* // Screen Size 768px check */
+@media (max-width: 991px) {
+    
+}
+
+/* // Screen Size 576px check */
+@media (max-width: 767px) {
+    
+}
+
+/* // Screen Size All mobile check */
+@media (max-width: 575px) {
+
+    /* Navbar Top Line */
+    .mainNavDiv{
+        padding: 5px 0px;
+        gap: 10px;
+        justify-content: center;
+    }
+    .navTopLineIcons , .navTopLineTxt{
+        padding: 0px;
+        font-size: 8px;
+    }
+    .navTxtLog{
+        padding: 0px;
+        padding-right: 4px;
+        font-size: 8px;
+    }
+    .navTxtReg{
+        padding: 0px;
+        padding-left: 4px;
+        font-size: 8px;
+    }
+
+    /* Navbar Search Line */
+    .navSearchDiv{
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 18px;
+    }
+
+    .navLogo{
+        font-size: 18px;
+    }
+    .navLogoTxt{
+        font-weight: 600;
+    }
+
+    .searchCartDiv{
+        gap: 10px;
+        margin-top: 5px;
+    }
+    #searchBox{
+        width: 300px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+    .navCartIcon{
+        font-size: 20px;
+    }
+
+}

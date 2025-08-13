@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Collection Page</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="Screenshot 2025-08-02 123534.png" type="image/x-icon">
     
@@ -18,26 +22,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-
-    <style>
-        .montserrat-uniquifier{
-            font-family: "Montserrat";
-            font-optical-sizing: auto;
-            font-weight: 500;
-            font-style: normal;
-        }
-        body{
-            /* font-family: "Montserrat"; */
-        }
-        .navbar{
-            box-shadow: 0px 0px 20px rgb(187, 187, 187);
-        }
-        .navInp>::placeholder{
-            font-weight: 500;
-        }
-        /* font-[Montserrat] */
-    </style>
-
 </head>
 
 <body class="h-screen flex flex-col bg-gray-100">
@@ -46,37 +30,39 @@
     <nav class="navbar fixed top-0 left-0 w-full z-10">
 
         <!-- Top Nav -->
-        <div class="flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
+        <div class="mainNavDiv flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
 
-            <div class="flex flex-row items-center hover:cursor-pointer">
-                <i class="fa-solid fa-location-crosshairs text-gray-300 pr-6"></i>
-                <a href="#" class="text-[15px] text-gray-200 hover:text-slate-300">Add Location</a>
+            <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
+                <i class="navTopLineIcons fa-solid fa-location-crosshairs text-gray-300 pr-6"></i>
+                <a href="#" class="navTopLineTxt text-[15px] text-gray-200 hover:text-slate-300">ADD LOCATION</a>
             </div>
-            <div class="flex flex-row items-center hover:cursor-pointer">
-                <i class="fa-solid fa-phone text-gray-300 pr-5"></i>
-                <a href="#" class="text-[15px] text-gray-200 hover:text-slate-300">0300-222-333-4</a>
+            <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
+                <i class="navTopLineIcons fa-solid fa-phone text-gray-300 pr-5"></i>
+                <a href="#" class="navTopLineTxt text-[15px] text-gray-200 hover:text-slate-300">0300-222-333-4</a>
             </div>
-            <div class="flex flex-row items-center hover:cursor-pointer">
-                <i class="fa-regular fa-circle-user text-gray-300 pr-6"></i>
-                <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pr-2 border-r-1">LOGIN</a>
-                <a href="#" class="text-[13px] text-gray-200 hover:text-slate-300 pl-2">REGISTER</a>
+            <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
+                <i class="navTopLineIcons fa-regular fa-circle-user text-gray-300 pr-6"></i>
+                <a href="#" class="navTxtLog text-[13px] text-gray-200 hover:text-slate-300 pr-2 border-r-1">LOGIN</a>
+                <a href="#" class="navTxtReg text-[13px] text-gray-200 hover:text-slate-300 pl-2">REGISTER</a>
             </div>
 
         </div>
 
         <!-- Search Nav -->
-        <div class="flex flex-row justify-evenly py-5 bg-white">
+        <div class="navSearchDiv flex flex-row justify-evenly py-5 bg-white">
 
-            <div class="col-span-2 flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-90">
-                <a href="index.html"><i class="fa-solid fa-utensils text-[24px]" style="color: #556155;"></i></a>
-                <p class="pl-2 text-[20px]">FOOD</p>
+            <div class="mainLogoDiv flex items-center transition-transform duration-500 hover:cursor-pointer hover:scale-90">
+                <a href="index.html"><i class="navLogo fa-solid fa-utensils text-[24px]" style="color: #556155;"></i></a>
+                <p class="navLogoTxt pl-2 text-[20px]">FOOD</p>
             </div>
-            <div class="col-span-6 text-center navInp">
-                <input id="searchBox" type="search" placeholder="Search products..." 
-                class="shadow-md rounded-3xl w-[650px] p-[10px] pl-5 font-sans bg-[#e7e7e7]">
-            </div>
-            <div class="flex flex-row items-center hover:cursor-pointer">
-                <i class="fa-solid fa-cart-shopping text-[25px]" style="color: #556155;"></i>
+            <div class="searchCartDiv flex flex-row gap-30">
+                <div class="text-center navInp">
+                    <input id="searchBox" type="search" placeholder="Search products..." 
+                    class="shadow-md rounded-3xl w-[650px] p-[10px] pl-5 font-sans bg-[#e7e7e7]">
+                </div>
+                <div class="flex flex-row items-center justify-end hover:cursor-pointer">
+                    <i class="navCartIcon fa-solid fa-cart-shopping text-[25px]" style="color: #556155;"></i>
+                </div>
             </div>
 
         </div>
@@ -122,7 +108,7 @@
             <div class="grid grid-cols-12">
 
                 <!-- All Funtionality Small Cards -->
-                <div class="col-span-6 flex items-center font-[Montserrat]">
+                <div class="col-span-8 flex items-center font-[Montserrat]">
 
                     <div><p class="font-semibold text-[18px]">Filter By :</p></div>
                     <div class="flex flex-row" id="allCategFiltLine"></div>
@@ -133,9 +119,9 @@
                 </div>
 
                 <!-- Page Set Dropdown -->
-                <div class="col-span-3 flex justify-center">
-                    <p class="font-semibold text-[15px] pr-2 flex items-center">ITEMS PER PAGE :</p>
-                    <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-20 h-10 text-center font-semibold hover:cursor-pointer">
+                <div class="col-span-2 flex justify-center mr-2">
+                    <p class="font-semibold text-[15px] pr-2 flex items-center">ITEMS PER PAGE</p>
+                    <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-17 h-10 text-center font-semibold hover:cursor-pointer">
                         <option value="15">15</option>
                         <option value="12">12</option>
                         <option value="9" >9</option>
@@ -145,8 +131,8 @@
                 </div>
 
                 <!-- Sort Dropdown -->
-                <div class="col-span-2 flex justify-center">
-                    <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-45 h-10 text-center font-semibold hover:cursor-pointer">
+                <div class="col-span-2 flex justify-center mr-6">
+                    <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-42 h-10 text-center font-semibold hover:cursor-pointer">
                         <option class="" selected disabled>SELECT SORTING</option>
                         <option value="ratLowToHigh">Rating Low to High</option>
                         <option value="ratHighToLow">Rating High to Low</option>
