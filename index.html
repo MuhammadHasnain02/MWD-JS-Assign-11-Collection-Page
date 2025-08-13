@@ -122,7 +122,7 @@
             <div class="grid grid-cols-12">
 
                 <!-- All Funtionality Small Cards -->
-                <div class="col-span-9 flex items-center font-[Montserrat]">
+                <div class="col-span-6 flex items-center font-[Montserrat]">
 
                     <div><p class="font-semibold text-[18px]">Filter By :</p></div>
                     <div class="flex flex-row" id="allCategFiltLine"></div>
@@ -132,10 +132,22 @@
                     
                 </div>
 
+                <!-- Page Set Dropdown -->
+                <div class="col-span-3 flex justify-center">
+                    <p class="font-semibold text-[15px] pr-2 flex items-center">ITEMS PER PAGE :</p>
+                    <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-20 h-10 text-center font-semibold hover:cursor-pointer">
+                        <option value="15">15</option>
+                        <option value="12">12</option>
+                        <option value="9" >9</option>
+                        <option value="6" >6</option>
+                        <option value="3" >3</option>
+                    </select>
+                </div>
+
                 <!-- Sort Dropdown -->
-                <div class="col-span-3 flex justify-center" id="sortDropdown">
+                <div class="col-span-2 flex justify-center">
                     <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-45 h-10 text-center font-semibold hover:cursor-pointer">
-                        <option class="" selected disabled>Select Sorting</option>
+                        <option class="" selected disabled>SELECT SORTING</option>
                         <option value="ratLowToHigh">Rating Low to High</option>
                         <option value="ratHighToLow">Rating High to Low</option>
                         <option value="pricLowToHigh">Price Low to High</option>
@@ -153,20 +165,7 @@
             <!-- Pagination Buttons -->
             <div class="flex justify-center my-8">
                 <div class="text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
-    
-                    <button class="flex flex-row items-center hover:cursor-pointer">‹ Previous</button>
-                    <div id="pagination" class="flex justify-center">
-                        <button onclick="changePage()"
-                        class="px-5 py-3 m-0 hover:cursor-pointer">1</button>
-                        <button onclick="changePage()"
-                        class="px-5 py-3 m-0 hover:cursor-pointer">2</button>
-                        <button onclick="changePage()"
-                        class="px-5 py-3 flex flex-col justify-center hover:cursor-pointer">...</button>
-                        <button onclick="changePage()"
-                        class="px-5 py-3 m-0 hover:cursor-pointer">10</button>
-                    </div>
-                    <button class="flex flex-row items-center hover:cursor-pointer">Next ›</button>
-
+                    <div id="pagination" class="flex justify-center"></div>
                 </div>
 
             </div>

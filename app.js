@@ -142,56 +142,82 @@ let products = [
   
 ];
 
-// ======================= Find Categories in Data =======================
+// ======================= STATE =======================
+let selectedCateg = [];
+let selectedRat = null;
+let priceRange = null;
+let currentFilteredData = products.slice();
+let currentPage = 1;
+let itemsPerPage = 15;
 
-let category = []
-products.forEach(product => {
-  
-  if (!category.includes(product.category)) {
-    category.push(product.category)
-  }
-  
-});
+// ======================= HELPERS =======================
+const findPriceRange = () => {
+  let min = products[0].price, max = products[0].price;
+  products.forEach(p => {
+    if (p.price < min) min = p.price;
+    if (p.price > max) max = p.price;
+  });
+  return { min, max };
+};
+priceRange = findPriceRange();
 
-// ======================= MAP CATEGORIES =======================
+// ======================= DOM REFERENCES =======================
+const slider = document.getElementById("priceSlider");
+const minValue = document.getElementById("minValue");
+const maxValue = document.getElementById("maxValue");
+const prodCards = document.getElementById("prodCards");
+const paginationContainer = document.getElementById("pagination");
+const itmDropdown = document.getElementById("itmPrPgDropdown");
+const sortDropdown = document.getElementById("sortDropdown");
+const allCategFiltLine = document.getElementById("allCategFiltLine");
+const allRatFiltLine = document.getElementById("allRatFiltLine");
+const allRangFiltLine = document.getElementById("allRangFiltLine");
+const clearAllBtnDiv = document.getElementById("clearAllBtnDiv");
 
-let mapCategTxt = () => {
+// ======================= CATEGORIES (map) =======================
 
-  category.forEach(categ => {
-    
-    let categCards = document.getElementById("categCards")
-    categCards.innerHTML +=
-    `
-    <div class="flex flex-row space-y-3 font-medium text-[15px]">
-      <div><input type="checkbox" onchange="filterCategory('${categ}', this.checked)" class="checkCateg w-4 h-4 hover:cursor-pointer"></div>
-      <label class="pl-2 hover:cursor-pointer">${categ}</label>
-    </div>
-    `
-  })
+let categories = [];
+products.forEach(p => { if (!categories.includes(p.category)) categories.push(p.category); });
+
+function mapCategTxt() {
+  let container = document.getElementById("categCards");
+  categories.forEach(c => {
+    container.innerHTML += `
+      <div class="flex flex-row space-y-3 font-medium text-[15px]">
+        <div><input type="checkbox" onchange="filterCategory('${c}', this.checked)" class="checkCateg w-4 h-4 hover:cursor-pointer"></div>
+        <label class="pl-2 hover:cursor-pointer">${c}</label>
+      </div>
+    `;
+  });
 }
-mapCategTxt()
+mapCategTxt();
 
-// ======================= Find Selected Category =======================
+// after rendering checkboxes, update reference
+function allCheckboxes() {
+  return document.querySelectorAll(".checkCateg")
+}
 
-let allCheckboxes = document.querySelectorAll(".checkCateg")
-let allCategFiltLine = document.getElementById("allCategFiltLine")
-let selectedCateg = []
-let checked = false
+// ======================= Find User Selected Category =======================
 
 let filterCategory = (category , isChecked) => {
 
   if (isChecked) {
-    selectedCateg.push(category)
-    checked = true
+    if (!selectedCateg.includes(category)) selectedCateg.push(category);
   }
   else {
-    selectedCateg = selectedCateg.filter((cat) => cat !== category);
-    checked = false
+    selectedCateg = selectedCateg.filter(c => c !== category);
   }
-  
-  console.log("selectedCategory -->", selectedCateg);
-  mapTopFiltCategCards()
-  mapProdCards();
+  mapTopFiltCategCards();
+  updateFilteredAndRender();
+   
+}
+
+// ======================= Get User Filter Rating =======================
+
+function filterRating(rating) {
+  selectedRat = selectedRat === rating ? null : rating;
+  mapTopFiltRatCards();
+  updateFilteredAndRender();
 }
 
 // ======================= Map Filtered Category cards on top =======================
@@ -200,7 +226,7 @@ let mapTopFiltCategCards = () => {
 
   // Clear previous catgory cards
   allCategFiltLine.innerHTML = ""
-  
+
   // Map new top catgory cards
   selectedCateg.forEach((categ) => {
     allCategFiltLine.innerHTML +=
@@ -218,119 +244,29 @@ let mapTopFiltCategCards = () => {
 
 // ======================= Remove Filtered Category on top =======================
 
-let removeFiltCategOnTop = (category) => {
+let removeFiltCategOnTop = (cat) => {
 
-  selectedCateg = selectedCateg.filter(cat => cat !== category)
-
-  allCheckboxes.forEach(checkbox => {
-
+  selectedCateg = selectedCateg.filter(categ => categ !== cat);
+  // uncheck checkboxes
+  allCheckboxes().forEach(checkbox => {
     if (checkbox.checked === true) {
       checkbox.checked = false
     }
-
   })
-  mapTopFiltCategCards()
-  mapProdCards()
   
-}
-
-// ======================= Get Filter Product =======================
-
-// let userSelectCateg = []
-
-let getFilterProd = (data , selectedCategory , selectedRating , selectedRange) => {
-
-  let filtProducts = data;
-
-  // Filter by category
-  if (selectedCateg.length) {
-
-    filtProducts = filtProducts.filter((product) => {
-      let selCateg =  selectedCategory.includes(product.category)
-      // userSelectCateg.push(selCateg)
-      return selCateg
-    })
-
-  }
-  
-  // Filter by rating
-  if (selectedRat) {
-
-    filtProducts = filtProducts.filter((product) => {
-      return product.rating === selectedRat
-    })
-  
-  }
-  
-  // Filter by Range
-  if (selectedRange) {
-
-    filtProducts = filtProducts.filter((product) => {
-      return product.price <= selectedRange
-    });
-
-  }
-
-  return filtProducts
-}
-
-// ======================= MAP RATINGS =======================
-
-let selectedRat = ""
-
-let ratingCards = document.getElementById("ratingCards")
-let mapRating = () => {
-
-  let ratingArr = [5 , 4 , 3 , 2 , 1]
-
-  ratingCards.innerHTML = ratingArr
-  .map((rat) =>
-    `
-    <div class=" h-8 flex flex-row cursor-pointer items-center" onclick= "filterRating(${rat})">
-
-    ${Array(5).fill()
-      .map((_ , i) => 
-      `<i class="fa-solid fa-star text-[14px] pr-5
-        ${i < rat ? "text-yellow-400" : "text-gray-300"}
-        ${rat === selectedRat ? "!text-[#e85151]" : ""}
-      "></i>`
-      )
-      .join("")
-
-    }
-      <p class="flex items-end font-medium pl-1 text-gray-500">${rat === 5 ? "5.0" : rat.toFixed(1) + "+"}</p>
-    </div>
-    `
-  )
-  .join("")
-
-}
-mapRating()
-
-// ======================= Get Filter Rating =======================
-
-let filterRating = (rating) => {
-  
-  selectedRat = selectedRat === rating ? "" : rating
-  console.log("selectedRating => " , selectedRat);
-
-  mapRating()
-  mapProdCards()
-  mapTopFiltRatCards()
+  mapTopFiltCategCards();
+  updateFilteredAndRender();
 }
 
 // ======================= Map Filtered Rating cards on top =======================
-
-let allRatFiltLine = document.getElementById("allRatFiltLine")
 
 let mapTopFiltRatCards = () => {
 
   // Clear previous catgory cards
   allRatFiltLine.innerHTML = ""
-  
-  // Map new top catgory cards
+
   if (selectedRat) {
-    allRatFiltLine.innerHTML +=
+    allRatFiltLine.innerHTML =
     `
       <div class="flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
         <p class="">Rating: ${selectedRat} ★</p>
@@ -338,274 +274,231 @@ let mapTopFiltRatCards = () => {
       </div>
     `
   }
-  mapClearBtn()
+  mapClearBtn();
 }
 
 // ======================= Remove Filtered Rating on top =======================
 
 let removeFiltRatOnTop = () => {
 
-  selectedRat = ""
-  allRatFiltLine.innerHTML = ""
-  mapRating();
-  mapProdCards()
-  // clearAllBtnDiv.innerHTML = ""
+  selectedRat = null;
+  allRatFiltLine.innerHTML = "";
+  updateFilteredAndRender();
 
 }
-
-// ======================= Find Min|Max Value =======================
-
-let findPriceRange = () => {
-
-  let min = products[0].price
-  let max = 0
-
-  products.forEach(product => {
-    if (product.price < min) min = product.price;
-    if (product.price > max) max = product.price;
-  })
-
-  return {min , max}  
-}
-let priceRange = findPriceRange()
 
 // ======================= Map Min|Max Value =======================
 
-let slider      = document.getElementById("priceSlider")
-let minValue    = document.getElementById("minValue")
-let maxValue    = document.getElementById("maxValue")
-let productCont = document.getElementById("prodCards")
-let allRangFiltLine = document.getElementById("allRangFiltLine")
-
-minValue.textContent = priceRange.min
-maxValue.textContent = priceRange.max
-
-slider.min = priceRange.min
-slider.max = priceRange.max
-
-slider.value = priceRange.max
+minValue.textContent = priceRange.min;
+maxValue.textContent = priceRange.max;
+slider.min = priceRange.min;
+slider.max = priceRange.max;
+slider.value = priceRange.max;
 
 slider.addEventListener("input", () => {
-  
+
   let selected = Number(slider.value);
   maxValue.textContent = selected;
-  
-  // Find lower or equal price manually
-  let targetPrice = 0;
-  products.forEach(product => {
-    product.price <= selected && product.price > targetPrice ? targetPrice = product.price : ""
-  });
 
   // ======================= Map Filtered Range cards on top =======================
 
-  // Clear previous catgory cards
-  allRangFiltLine.innerHTML = ""
-  
-  // Map new top catgory cards
-  allRangFiltLine.innerHTML +=
+  allRangFiltLine.innerHTML = 
   `
     <div class="flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
-      <p class="">${priceRange.min} - ${targetPrice}</p>
+      <p class="">${priceRange.min} - ${selected}</p>
       <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltRangOnTop()"></i>
     </div>
-  `
-
-  mapClearBtn()
-
-  // Set Max Value
-  maxValue.textContent = targetPrice
-
-  // Filter matched products
-  let matched = [];
-  products.forEach(product => {
-    product.price <= targetPrice ? matched.push(product) : ""
-  })
-
-  // Render cards
-  productCont.innerHTML = "";
-  matched.forEach(prod => {
-
-    productCont.innerHTML +=
-    `
-      <div class="col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
-
-          <div>
-              <img src="${prod.image}"
-              class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
-          </div>
-          <div class="bg-[#5b7b7a] text-white px-3 py-3 rounded-b-2xl">
-              <p class="font-medium text-[25px]">${prod.title}</p>
-                <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2  items-center">
-                ${
-                  Array(5).fill()
-                  .map((_ , i) => 
-                    `
-                    <i class="fa-solid fa-star text-[14px]
-                    ${
-                      i < prod.rating ? "text-yellow-400" : "text-gray-300"
-                    }
-                    "></i>                    
-                    `
-                  )
-                  .join("")
-                }                
-                <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
-                </p>
-              <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
-              <div class="flex justify-between items-center">
-                  <p class="text-[20px] hover:text-gray-300">$${prod.price}</p>
-                  <p><i class="fa-solid fa-cart-shopping text-white hover:text-gray-300"></i></p>
-              </div>
-          </div>
-
-      </div>
-    `
-
-  })
-  mapProdCards()
-
-})
-
+  `;
+  mapClearBtn();
+  updateFilteredAndRender();
+});
 
 // ======================= Remove Filtered Range on top =======================
 
-let removeFiltRangOnTop = () => {
+function removeFiltRangOnTop() {
 
-  allRangFiltLine.innerHTML = ""
   slider.value = priceRange.max;
-  maxValue.textContent = priceRange.max
-  mapProdCards()
+  maxValue.textContent = priceRange.max;
+  allRangFiltLine.innerHTML = "";
+  mapClearBtn();
+  updateFilteredAndRender();
 
 }
 
-// ======================= MAP PRODUCT CARDS =======================
+// ======================= GET FILTERED PRODUCTS =======================
 
+function getFilterProd(data, selCateg, selRat, selRange) {
+  let filtProducts = data.slice();
 
-let mapProdCards = () => {
+  // Filter by category
+  if (selCateg && selCateg.length) {
+    filtProducts = filtProducts.filter(prod => selCateg.includes(prod.category));
+  }
+
+  // Filter by rating
+  if (selRat) {
+    filtProducts = filtProducts.filter(prod => prod.rating === selRat);
+  }
+
+  // Filter by Range
+  if (selRange != null && selRange !== "") {
+    filtProducts = filtProducts.filter(prod => prod.price <= selRange);
+  }
+
+  return filtProducts;
   
-  let selectedRang = Number(slider.value);
-  let visibProducts = getFilterProd(products , selectedCateg , selectedRat , selectedRang)
+}
 
-  let cardDiv = document.getElementById("prodCards")
-  cardDiv.innerHTML = visibProducts
-  .map((prod) =>
-    `
+// ======================= RENDER + PAGINATION =======================
+
+function renderProducts(filteredProducts) {
+  // guard defaults
+  if (!itemsPerPage || itemsPerPage <= 0) itemsPerPage = 15
+  let startIndex = (currentPage - 1) * itemsPerPage
+  let endIndex = startIndex + itemsPerPage
+  let paginated = filteredProducts.slice(startIndex, endIndex)
+
+  prodCards.innerHTML = "";
+  paginated.forEach(prod => {
+    prodCards.innerHTML += `
       <div class="col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
-
-          <div>
-              <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
+        <div><img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]"></div>
+        <div class="bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
+          <p class="font-medium text-[25px]">${prod.title}</p>
+          <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
+            ${
+              Array(5).fill().map((_, i) => 
+                `<i class="fa-solid fa-star text-[14px] ${i < prod.rating ? "text-yellow-400" : "text-gray-300"}"></i>`
+              ).join("")
+            }
+            <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
+          </p>
+          <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
+          <div class="flex justify-between items-center">
+            <p class="text-[20px] hover:text-gray-300">$${prod.price}</p>
+            <p><i class="fa-solid fa-cart-shopping text-white hover:text-gray-300"></i></p>
           </div>
-          <div class="bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
-              <p class="font-medium text-[25px]">${prod.title}</p>
-                <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
-                ${
-                  Array(5).fill()
-                  .map((_ , i) => 
-                    `
-                    <i class="fa-solid fa-star text-[14px]
-                    ${
-                      i < prod.rating ? "text-yellow-400" : "text-gray-300"
-                    }
-                    "></i>                    
-                    `
-                  )
-                  .join("")
-                }                
-                <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
-                </p>
-              <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
-              <div class="flex justify-between items-center">
-                  <p class="text-[20px] hover:text-gray-300">$${prod.price}</p>
-                  <p><i class="fa-solid fa-cart-shopping text-white hover:text-gray-300"></i></p>
-              </div>
-          </div>
-
+        </div>
       </div>
-    `
-  )
-  .join("")
+    `;
+  });
+
+  renderPaginationButtons(filteredProducts.length);
 }
-mapProdCards()
 
-// ======================= Sort Rating & Price =======================
+// ======================= Render Pagination Button =======================
 
-let sortDropdown = document.getElementById("sortDropdown")
-sortDropdown.addEventListener("change" , (e) => {
+function renderPaginationButtons(totalItems) {
 
-  let sortType = e.target.value
-  console.log("sort Type => " , sortType)
-
-  if (sortType === "ratLowToHigh") {
-    products.sort((a , b) => a.rating - b.rating)
-  }
-  else if (sortType === "ratHighToLow") {
-    products.sort((a , b) => b.rating - a.rating)
-  }
-  else if (sortType === "pricLowToHigh") {
-    products.sort((a , b) => a.price - b.price)
-  }
-  else if (sortType === "pricHighToLow") {
-    products.sort((a , b) => b.price - a.price)
-  }
-  mapProdCards()
-
-})
-
-// ======================= Map Clear All Button on top =======================
-
-let clearAllBtnDiv = document.getElementById("clearAllBtnDiv")
-
-let mapClearBtn = () => {
-  let selectedRang = Number(slider.value);
-
-  let categorySelected = selectedCateg.length > 0;
-  let rangeSelected = selectedRang !== null && selectedRang !== "";
-  let ratingSelected = selectedRat !== null && selectedRat !== "";
+  let totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+  paginationContainer.innerHTML = "";
   
-  if (categorySelected || rangeSelected || ratingSelected) {
-    clearAllBtnDiv.innerHTML =
+  // previous
+  paginationContainer.innerHTML +=
+  `<button onclick="changePage(${Math.max(1, currentPage-1)})" class="px-4 py-2 hover:cursor-pointer">‹ Previous</button>`
+  for (let i = 1; i <= totalPages; i++) {
+    paginationContainer.innerHTML +=
     `
-    <div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer">
-      <p class="" >Clear All</p>
-    </div>
+    <button onclick="changePage(${i})" class="px-5 py-3 m-0 ${i === currentPage ? 'bg-gray-200' : ''} border rounded-md">
+        ${i}
+    </button>
     `
-    checked = true
   }
-  else {
-    checked = false
+  // next
+  paginationContainer.innerHTML +=
+  `<button onclick="changePage(${Math.min(totalPages, currentPage + 1)})" class="px-4 py-2 hover:cursor-pointer">Next ›</button>`;
+}
+
+function changePage(pageNum) {
+  currentPage = pageNum;
+  renderProducts(currentFilteredData);
+}
+
+// ======================= UPDATE FILTERED DATA (call this everywhere) =======================
+
+function updateFilteredAndRender() {
+  const selRange = Number(slider.value);
+  currentFilteredData = getFilterProd(products, selectedCateg, selectedRat, selRange);
+  currentPage = 1;
+  renderProducts(currentFilteredData);
+  mapClearBtn();
+}
+
+// ======================= Clear All Button logic =======================
+
+function mapClearBtn() {
+
+  const rangeSelected = Number(slider.value) !== priceRange.max;
+  const categorySelected = selectedCateg.length > 0;
+  const ratingSelected = !!selectedRat;
+  if (categorySelected || rangeSelected || ratingSelected) {
+    clearAllBtnDiv.innerHTML = `<div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-1.5 ml-4 gap-2 border-[2px] rounded-2xl hover:cursor-pointer"><p>Clear All</p></div>`;
+  } else {
+    clearAllBtnDiv.innerHTML = "";
   }
 
 }
 
-// ======================= Clear All Button on top =======================
+// ======================= Clear All Filter logic =======================
 
-let clearAllFilt = () => {
+function clearAllFilt() {
 
   // Clear selected category
   selectedCateg = []
-  
-  // Uncheck all category checkboxes
-  allCheckboxes.forEach(checkbox => {
-    checkbox.checked = false
-  })
+  allCheckboxes().forEach(ch => ch.checked = false)
 
   // Clear selected rating
-  selectedRat = ""
-  mapRating()
+  selectedRat = null
 
   // Reset price slider
-  slider.value = priceRange.max;
+  slider.value = priceRange.max
   maxValue.textContent = priceRange.max;
-  
+
   // Clear top filter cards
   allCategFiltLine.innerHTML = ""
   allRatFiltLine.innerHTML = ""
   allRangFiltLine.innerHTML = ""
-
-  // Show all products
-  mapProdCards();
-
-  // Clear Chips
-  clearAllBtnDiv.innerHTML = ""
+  
+  // dataset and render
+  updateFilteredAndRender()
 
 }
+
+// ======================= Sort Items Per Page =======================
+
+itemsPerPage = parseInt(itmDropdown.value || 15);
+
+itmDropdown.addEventListener("change", function() {
+
+  itemsPerPage = parseInt(this.value);
+  currentPage = 1;
+  renderProducts(currentFilteredData);
+
+});
+
+// ======================= Sort Rating & Price =======================
+
+sortDropdown.addEventListener("change", function(e) {
+
+  const sortType = e.target.value
+
+  if (sortType === "ratLowToHigh") {
+    products.sort((a,b) => a.rating - b.rating)
+  }
+  else if (sortType === "ratHighToLow") {
+    products.sort((a,b) => b.rating - a.rating)
+  }
+  else if (sortType === "pricLowToHigh") {
+    products.sort((a,b) => a.price - b.price)
+  }
+  else if (sortType === "pricHighToLow") {
+    products.sort((a,b) => b.price - a.price)
+  }
+
+  // after sorting update the filtered dataset and render
+  updateFilteredAndRender();
+
+});
+
+// ======================= Initial render =======================
+updateFilteredAndRender();
