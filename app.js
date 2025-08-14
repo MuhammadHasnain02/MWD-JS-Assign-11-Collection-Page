@@ -258,6 +258,37 @@ let removeFiltCategOnTop = (cat) => {
   updateFilteredAndRender();
 }
 
+// ======================= MAP RATINGS =======================
+
+let ratingCards = document.getElementById("ratingCards")
+let mapRating = () => {
+
+  let ratingArr = [5 , 4 , 3 , 2 , 1]
+
+  ratingCards.innerHTML = ratingArr
+  .map((rat) =>
+    `
+    <div class=" h-8 flex flex-row cursor-pointer items-center" onclick= "filterRating(${rat})">
+
+    ${Array(5).fill()
+      .map((_ , i) => 
+      `<i class="fa-solid fa-star text-[14px] pr-5
+        ${i < rat ? "text-yellow-400" : "text-gray-300"}
+        ${rat === selectedRat ? "!text-[#e85151]" : ""}
+      "></i>`
+      )
+      .join("")
+
+    }
+      <p class="flex items-end font-medium pl-1 text-gray-500">${rat === 5 ? "5.0" : rat.toFixed(1) + "+"}</p>
+    </div>
+    `
+  )
+  .join("")
+
+}
+mapRating()
+
 // ======================= Map Filtered Rating cards on top =======================
 
 let mapTopFiltRatCards = () => {
@@ -502,3 +533,17 @@ sortDropdown.addEventListener("change", function(e) {
 
 // ======================= Initial render =======================
 updateFilteredAndRender();
+
+// ======================= Search event listener =======================
+
+document.getElementById("searchBox").addEventListener("input", function () {
+  let searVal = this.value.trim().toLowerCase();
+
+  // Filter products based on search text
+  currentFilteredData = products.filter(prod =>
+    prod.title.toLowerCase().includes(searVal)
+  )
+
+  currentPage = 1
+  renderProducts(currentFilteredData)
+});
