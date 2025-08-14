@@ -73,26 +73,26 @@
     <div class="grid grid-cols-12 gap-3 mt-42">
 
         <!-- Left Section -->
-        <div class="sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
+        <div class="leftSecMainDiv sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
         
             <div class="text-black px-4 py-2 border-b border-gray-300" id="categCards">
                 <h3 class="py-2 font-semibold">Category Filter</h3>
             </div>
 
-            <div class="text-black px-4 py-5 border-b border-gray-300">
+            <div class="pricRangCardsDiv text-black px-4 py-5 border-b border-gray-300">
 
                 <h3 class="font-semibold">Pricing Filter</h3>
-                <div class="pt-2">
+                <div class="pt-2 rangSlidDiv">
                     <input type="range" class="w-full" id="priceSlider">
                 </div>
-                <div class="flex justify-between">
+                <div class="flex justify-between rangSlidTxtDiv">
                     <p id="minValue">--</p>
                     <p id="maxValue">--</p>
                 </div>
 
             </div>
 
-            <div class="text-black px-4 py-4">
+            <div class="ratCardsDiv text-black px-4 py-4">
 
                 <h3 class="text-[17px] font-semibold mb-1">Rating Filter</h3>
                 <div class="flex flex-col" id="ratingCards"></div>
@@ -144,7 +144,7 @@
             </div>
 
             <hr class="mb-4">
-        
+
             <!-- Cards -->
             <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
 

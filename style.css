@@ -80,12 +80,101 @@
         margin-top: 5px;
     }
     #searchBox{
-        width: 300px;
-        padding-top: 4px;
-        padding-bottom: 4px;
+        width: 260px;
+        padding-top: 3px;
+        padding-bottom: 3px;
     }
     .navCartIcon{
         font-size: 20px;
     }
+
+    /* Left Section */
+    .leftSecMainDiv{
+        display: flex;
+        flex-wrap: wrap;
+        position: static;
+        flex-direction: row;
+        gap: 10px;
+        width: 310px;
+        height: auto;
+        border: none;
+        border-radius: 0px;
+    }
+
+    #categCards{
+        flex: 1 1 calc(50% - 10px);
+        min-width: 150px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: white;
+        padding: 5px 15px;
+    }
+    #categCards>h3{
+        font-size: 14px;
+        font-weight: 600;
+    }
+    #categCards>div{
+        gap: 0;
+        height: 28px;
+    }
+    #categCards>div>label{
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .pricRangCardsDiv{
+        align-items: center;
+        flex: 1 1 calc(50% - 10px);
+        min-width: 150px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: white;
+        padding: 25px 16px;
+    }
+    .pricRangCardsDiv>h3{
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .rangSlidDiv{
+
+    }
+    .rangSlidTxtDiv>p{
+
+    }
+    .rangSlidTxtDiv>p{
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .ratCardsDiv{
+        flex: 0 1 170px; /* 2 per row */
+        margin: auto;
+        min-width: 150px;
+        border: 1px solid #ccc; /* optional for look */
+        border-radius: 8px;
+        background-color: white;
+        padding-top: 12px;
+        padding-bottom: 7px;
+        padding-right: 0px;
+    }
+    .ratCardsDiv>h3{
+        font-size: 15px;
+        font-weight: 600;
+    }
+    #ratingCards{
+
+    }
+    #ratingCards>div{
+        gap: 0px;
+        height: 25px;
+    }
+    #ratingCards>div>i{
+        font-size: 10px;
+        width: 0px;
+    }
+    #ratingCards>div>p{
+        font-size: 12px;
+    }
+    
 
 }
