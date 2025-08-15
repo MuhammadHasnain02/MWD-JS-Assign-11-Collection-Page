@@ -231,7 +231,7 @@ let mapTopFiltCategCards = () => {
   selectedCateg.forEach((categ) => {
     allCategFiltLine.innerHTML +=
     `
-      <div class="flex flex-row items-center py-[6px] px-1.5 ml-2 gap-1 border-[2px] rounded-2xl">
+      <div class="categChip flex flex-row items-center py-[6px] px-1.5 ml-2 gap-1 border-[2px] rounded-2xl">
         <p class="text-[15px]">${categ}</p>
         <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltCategOnTop('${categ}')"></i>
       </div>
@@ -299,7 +299,7 @@ let mapTopFiltRatCards = () => {
   if (selectedRat) {
     allRatFiltLine.innerHTML =
     `
-      <div class="flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
+      <div class="ratChip flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
         <p class="">Rating: ${selectedRat} ★</p>
         <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltRatOnTop()"></i>
       </div>
@@ -336,7 +336,7 @@ slider.addEventListener("input", () => {
 
   allRangFiltLine.innerHTML = 
   `
-    <div class="flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
+    <div class="rangChip flex flex-row items-center p-1.5 ml-4 gap-2 border-[2px] rounded-2xl">
       <p class="">${priceRange.min} - ${selected}</p>
       <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltRangOnTop()"></i>
     </div>
@@ -396,25 +396,25 @@ function renderProducts(filteredProducts) {
   paginated.forEach(prod => {
     prodCards.innerHTML +=
     `
-    <div class="col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
+    <div class="prodCardsDiv col-span-4 border bg-white border-gray-300 rounded-2xl hover:cursor-pointer">
 
-      <div>
+      <div class="prodMainImg">
         <img src="${prod.image}" class="object-cover rounded-t-2xl z-[1] opacity-90 hover:opacity-100 transition-opacity w-full h-[250px]">
       </div>
-      <div class="bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
-        <p class="font-semibold text-[22px] font-[Montserrat]">${prod.title}</p>
-        <p class="text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
+      <div class="cardAllTxtDiv bg-[#fff] text-black px-3 py-3 rounded-b-2xl">
+        <p class="prodMainTxt font-semibold text-[22px] font-[Montserrat]">${prod.title}</p>
+        <p class="prodRat text-yellow-400 text-[32px] h-9 flex flex-row gap-2 items-center">
           ${
             Array(5).fill().map((_, i) => 
               `<i class="fa-solid fa-star text-[14px] ${i < prod.rating ? "text-yellow-400" : "text-gray-300"}"></i>`
             ).join("")
           }
-          <span class="text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
+          <span class="prodRatTxt text-black text-[15px] flex items-center mt-1">(${prod.rating})</span>
         </p>
-        <p class="pb-2 max-h-24 overflow-auto">${prod.description}</p>
-        <div class="flex justify-between items-center">
-          <p class="text-[20px] hover:text-gray-400">$${prod.price}</p>
-          <p><i class="fa-solid fa-cart-shopping text-[18px] text-black hover:text-gray-400"></i></p>
+        <p class="prodDescrp pb-2 max-h-24 overflow-auto">${prod.description}</p>
+        <div class="prodPriCartDiv flex justify-between items-center">
+          <p class="prodPric text-[20px] hover:text-gray-400">$${prod.price}</p>
+          <p><i class="prodCartIcon fa-solid fa-cart-shopping text-[18px] text-black hover:text-gray-400"></i></p>
         </div>
       </div>
 
@@ -439,7 +439,7 @@ function renderPaginationButtons(totalItems) {
   
   // previous
   paginationContainer.innerHTML +=
-  `<button onclick="changePage(${Math.max(1, currentPage-1)})" class="px-4 py-2 hover:cursor-pointer">‹ Previous</button>`
+  `<button onclick="changePage(${Math.max(1, currentPage-1)})" class="prevBtn px-4 py-2 hover:cursor-pointer">‹ Previous</button>`
   for (let i = 1; i <= totalPages; i++) {
     paginationContainer.innerHTML +=
     `
@@ -450,7 +450,7 @@ function renderPaginationButtons(totalItems) {
   }
   // next
   paginationContainer.innerHTML +=
-  `<button onclick="changePage(${Math.min(totalPages, currentPage + 1)})" class="px-4 py-2 hover:cursor-pointer">Next ›</button>`;
+  `<button onclick="changePage(${Math.min(totalPages, currentPage + 1)})" class="nextBtn px-4 py-2 hover:cursor-pointer">Next ›</button>`;
 }
 
 function changePage(pageNum) {
@@ -478,7 +478,7 @@ function mapClearBtn() {
   if (categorySelected || rangeSelected || ratingSelected) {
     clearAllBtnDiv.innerHTML =
     `
-    <div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-[6px] ml-3 border-[2px] rounded-2xl hover:cursor-pointer">
+    <div onclick="clearAllFilt()" class="clearAllChip flex flex-row items-center px-3 py-[6px] ml-3 border-[2px] rounded-2xl hover:cursor-pointer">
       <p class="text-[15px]">Clear All</p>
     </div>
     `

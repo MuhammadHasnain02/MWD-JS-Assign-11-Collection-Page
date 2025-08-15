@@ -11,32 +11,22 @@
     font-weight: 500;
 }
 
-/* // Screen Size 1400px check */
-@media (max-width: 1660px) {
-    
-}
+/* Screen Size 1400px */
+@media (max-width: 1660px) {}
 
-/* // Screen Size 1200px check */
-@media (max-width: 1399px) {
-    
-}
+/* Screen Size 1200px */
+@media (max-width: 1399px) {}
 
-/* // Screen Size 992px check */
-@media (max-width: 1199px) {
-    
-}
+/* Screen Size 992px */
+@media (max-width: 1199px) {}
 
-/* // Screen Size 768px check */
-@media (max-width: 991px) {
-    
-}
+/* Screen Size 768px */
+@media (max-width: 991px) {}
 
-/* // Screen Size 576px check */
-@media (max-width: 767px) {
-    
-}
+/* Screen Size 576px */
+@media (max-width: 767px) {}
 
-/* // Screen Size All mobile check */
+/* Screen Size All mobile check */
 @media (max-width: 575px) {
 
     /* Navbar Top Line */
@@ -80,6 +70,7 @@
         margin-top: 5px;
     }
     #searchBox{
+        font-size: 14px;
         width: 260px;
         padding-top: 3px;
         padding-bottom: 3px;
@@ -90,7 +81,6 @@
 
     /* Section */
     .mainAllSecDiv{
-        /* grid-column: span 1 / span 1 !important; */
         display: flex;
         flex-direction: column;
         margin-top: 140px;
@@ -157,10 +147,10 @@
     }
 
     .ratCardsDiv{
-        flex: 0 1 170px; /* 2 per row */
+        flex: 0 1 170px;
         margin: auto;
         min-width: 150px;
-        border: 1px solid #ccc; /* optional for look */
+        border: 1px solid #ccc;
         border-radius: 8px;
         background-color: white;
         padding-top: 12px;
@@ -171,9 +161,9 @@
         font-size: 15px;
         font-weight: 600;
     }
-    #ratingCards{
+    /* #ratingCards{
 
-    }
+    } */
     #ratingCards>div{
         gap: 0px;
         height: 25px;
@@ -198,16 +188,51 @@
         flex-direction: column;
     }
     .filtChipsDiv{
-        border-top: 1px solid black;
+        grid-column: span 6 / span 6 !important;
         border-bottom: 1px solid black;
         margin-bottom: 20px;
-        /* flex-direction: column; */
     }
     .filtChipsDiv>div>p{
-        font-size: 14px;
+        font-size: 10px;
         font-weight: 600;
         margin: 9px 0px;
         flex-direction: column;
+    }
+    .categChip{
+        border: 1px solid black;
+        margin-left: 5px;
+    }
+    .categChip>p{
+        font-size: 9px;
+    }
+    .categChip>i{
+        font-size: 10px;
+    }
+    .ratChip{
+        border: 1px solid black;
+        margin-left: 5px;
+    }
+    .ratChip>p{
+        font-size: 9px;
+    }
+    .ratChip>i{
+        font-size: 10px;
+    }
+    .rangChip{
+        border: 1px solid black;
+        margin-left: 5px;
+    }
+    .rangChip>p{
+        font-size: 9px;
+    }
+    .rangChip>i{
+        font-size: 10px;
+    }
+    .clearAllChip{
+        border: 1px solid black;
+    }
+    .clearAllChip>p{
+        font-size: 9px;
     }
 
     .dropdownsDiv{
@@ -221,26 +246,19 @@
         
     }
     .pgStDrpdwnDiv>p{
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 600;
     }
     #itmPrPgDropdown{
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 500;
         width: 45px;
         height: 35px;
         border: 1px solid rgb(191, 186, 186);
     }
-    .itmPrPgDropdown>option{
-
-    }
-
     
     .sortDrpdwnDiv{
         margin: 0px;
-    }
-    #sortDropdown{
-
     }
     #sortDropdown{
         font-size: 12px;
@@ -250,4 +268,69 @@
         border: 1px solid rgb(191, 186, 186);
     }
 
+    /* Products Card Div */
+    #prodCards{
+        margin-left: 5px;
+        margin-right: 5px;
+        gap: 5px;
+    }
+    .prodCardsDiv{
+        grid-column: span 6 / span 6 !important;
+    }
+    .cardAllTxtDiv{
+        padding: 10px;
+    }
+    .prodMainImg>img{
+        height: 140px;
+    }
+    .prodMainTxt{
+        font-size: 15px;
+    }
+    .prodRat{
+        gap: 3px;
+        height: 22px;
+    }
+    .prodRat>i{
+        font-size: 8px;
+    }
+    .prodRatTxt{
+        font-size: 11px;
+    }
+    .prodDescrp{
+        font-size: 12px;
+        padding-bottom: 2px;
+    }
+    /* .prodPriCartDiv{
+        
+    } */
+    .prodPric{
+        font-size: 13px;
+    }
+    .prodCartIcon{
+        font-size: 12px;
+    }
+
+    /* Pagination Button */
+    .paginMainDiv{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #pagination{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #pagination>button{
+        padding: 0px 2px;
+        border-radius: 0px;
+        border: 1px solid rgb(193, 193, 193);
+    }
+    #pagination>.prevBtn{
+        font-size: 12px;
+        padding: 0px 10px;
+    }
+    #pagination>.nextBtn{
+        font-size: 12px;
+        padding: 0px 10px;
+    }
+    
 }
