@@ -231,7 +231,7 @@ let mapTopFiltCategCards = () => {
   selectedCateg.forEach((categ) => {
     allCategFiltLine.innerHTML +=
     `
-      <div class="flex flex-row items-center py-[7px] px-1.5 ml-2 gap-1 border-[2px] rounded-2xl">
+      <div class="flex flex-row items-center py-[6px] px-1.5 ml-2 gap-1 border-[2px] rounded-2xl">
         <p class="text-[15px]">${categ}</p>
         <i class="fa-solid fa-circle-xmark hover:cursor-pointer" onclick="removeFiltCategOnTop('${categ}')"></i>
       </div>
@@ -478,7 +478,7 @@ function mapClearBtn() {
   if (categorySelected || rangeSelected || ratingSelected) {
     clearAllBtnDiv.innerHTML =
     `
-    <div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-[7px] ml-3 border-[2px] rounded-2xl hover:cursor-pointer">
+    <div onclick="clearAllFilt()" class="flex flex-row items-center px-3 py-[6px] ml-3 border-[2px] rounded-2xl hover:cursor-pointer">
       <p class="text-[15px]">Clear All</p>
     </div>
     `

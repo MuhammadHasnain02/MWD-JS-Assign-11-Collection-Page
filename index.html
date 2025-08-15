@@ -30,15 +30,15 @@
     <nav class="navbar fixed top-0 left-0 w-full z-10">
 
         <!-- Top Nav -->
-        <div class="mainNavDiv flex flex-row justify-end gap-10 pr-12 py-4 bg-[#556155]">
+        <div class="mainNavDiv flex flex-row justify-end gap-10 pr-12 py-3 bg-[#556155]">
 
             <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
                 <i class="navTopLineIcons fa-solid fa-location-crosshairs text-gray-300 pr-6"></i>
-                <a href="#" class="navTopLineTxt text-[15px] text-gray-200 hover:text-slate-300">ADD LOCATION</a>
+                <a href="#" class="navTopLineTxt text-[13px] text-gray-200 hover:text-slate-300">ADD LOCATION</a>
             </div>
             <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
                 <i class="navTopLineIcons fa-solid fa-phone text-gray-300 pr-5"></i>
-                <a href="#" class="navTopLineTxt text-[15px] text-gray-200 hover:text-slate-300">0300-222-333-4</a>
+                <a href="#" class="navTopLineTxt text-[14px] text-gray-200 hover:text-slate-300">0300-222-333-4</a>
             </div>
             <div class=" flex flex-row items-center font-[Montserrat] hover:cursor-pointer">
                 <i class="navTopLineIcons fa-regular fa-circle-user text-gray-300 pr-6"></i>
@@ -70,7 +70,7 @@
     </nav>
 
     <!-- Section -->
-    <div class="grid grid-cols-12 gap-3 mt-42">
+    <div class="mainAllSecDiv grid grid-cols-12 gap-3 mt-42">
 
         <!-- Left Section -->
         <div class="leftSecMainDiv sticky top-42 col-span-2 border h-130 py-2 rounded-xl border-gray-300 bg-gray-50 font-[Montserrat]">
@@ -102,13 +102,13 @@
         </div>
 
         <!-- Right Section -->
-        <div class="col-span-10 mb-2">
+        <div class="righSecMainDiv col-span-10 mb-2">
 
             <!-- Top Bar -->
-            <div class="grid grid-cols-12">
+            <div class="TopFiltDiv grid grid-cols-12">
 
                 <!-- All Funtionality Small Cards -->
-                <div class="col-span-8 flex items-center font-[Montserrat]">
+                <div class="filtChipsDiv col-span-8 flex items-end font-[Montserrat]">
 
                     <div><p class="font-semibold text-[18px]">Filter By :</p></div>
                     <div class="flex flex-row" id="allCategFiltLine"></div>
@@ -118,27 +118,31 @@
                     
                 </div>
 
-                <!-- Page Set Dropdown -->
-                <div class="col-span-2 flex justify-center mr-2">
-                    <p class="font-semibold text-[15px] pr-2 flex items-center">ITEMS PER PAGE</p>
-                    <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-17 h-10 text-center font-semibold hover:cursor-pointer">
-                        <option value="15">15</option>
-                        <option value="12">12</option>
-                        <option value="9" >9</option>
-                        <option value="6" >6</option>
-                        <option value="3" >3</option>
-                    </select>
-                </div>
+                <div class="dropdownsDiv flex col-span-4 items-end">
 
-                <!-- Sort Dropdown -->
-                <div class="col-span-2 flex justify-center mr-6">
-                    <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-42 h-10 text-center font-semibold hover:cursor-pointer">
-                        <option class="" selected disabled>SELECT SORTING</option>
-                        <option value="ratLowToHigh">Rating Low to High</option>
-                        <option value="ratHighToLow">Rating High to Low</option>
-                        <option value="pricLowToHigh">Price Low to High</option>
-                        <option value="pricHighToLow">Price High to Low</option>
-                    </select>
+                    <!-- Page Set Dropdown -->
+                    <div class="pgStDrpdwnDiv flex justify-center mr-2 font-[Montserrat]">
+                        <p class="font-semibold text-[14px] pr-2 flex items-center">ITEMS PER PAGE</p>
+                        <select id="itmPrPgDropdown" class="bg-white border-[2px] rounded-md w-16 h-11 text-center font-semibold hover:cursor-pointer">
+                            <option value="15">15</option>
+                            <option value="12">12</option>
+                            <option value="9" >9</option>
+                            <option value="6" >6</option>
+                            <option value="3" >3</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort Dropdown -->
+                    <div class="sortDrpdwnDiv flex justify-center mr-6">
+                        <select id="sortDropdown" class="bg-white border-[2px] rounded-md w-42 h-11 text-center font-semibold hover:cursor-pointer">
+                            <option class="" selected disabled>SELECT SORTING</option>
+                            <option value="ratLowToHigh">Rating Low to High</option>
+                            <option value="ratHighToLow">Rating High to Low</option>
+                            <option value="pricLowToHigh">Price Low to High</option>
+                            <option value="pricHighToLow">Price High to Low</option>
+                        </select>
+                    </div>
+                    
                 </div>
                 
             </div>
@@ -146,15 +150,14 @@
             <hr class="mb-4">
 
             <!-- Cards -->
-            <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div>
+            <!-- <div class="grid grid-cols-12 gap-3 mx-8" id="prodCards"></div> -->
 
             <!-- Pagination Buttons -->
-            <div class="flex justify-center my-8">
+            <!-- <div class="flex justify-center my-8">
                 <div class="text-gray-500 gap-5 border border-gray-300 rounded-md px-3 flex flex-row justify-center items-center">
                     <div id="pagination" class="flex justify-center"></div>
                 </div>
-
-            </div>
+            </div> -->
 
         </div>
 

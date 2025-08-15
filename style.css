@@ -88,8 +88,17 @@
         font-size: 20px;
     }
 
+    /* Section */
+    .mainAllSecDiv{
+        /* grid-column: span 1 / span 1 !important; */
+        display: flex;
+        flex-direction: column;
+        margin-top: 140px;
+    }
+
     /* Left Section */
     .leftSecMainDiv{
+        background-color: #f3f4f6;
         display: flex;
         flex-wrap: wrap;
         position: static;
@@ -99,6 +108,7 @@
         height: auto;
         border: none;
         border-radius: 0px;
+        order: 1;
     }
 
     #categCards{
@@ -175,6 +185,69 @@
     #ratingCards>div>p{
         font-size: 12px;
     }
+
+    /* Right Section */
+    .righSecMainDiv{
+        order: 2;
+    }
     
+    /* Top Filters Line */
+    .TopFiltDiv{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .filtChipsDiv{
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+        margin-bottom: 20px;
+        /* flex-direction: column; */
+    }
+    .filtChipsDiv>div>p{
+        font-size: 14px;
+        font-weight: 600;
+        margin: 9px 0px;
+        flex-direction: column;
+    }
+
+    .dropdownsDiv{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: start;
+    }
+    
+    .pgStDrpdwnDiv{
+        margin-bottom: 20px;
+        
+    }
+    .pgStDrpdwnDiv>p{
+        font-size: 12px;
+        font-weight: 600;
+    }
+    #itmPrPgDropdown{
+        font-size: 14px;
+        font-weight: 400;
+        width: 45px;
+        height: 35px;
+        border: 1px solid rgb(191, 186, 186);
+    }
+    .itmPrPgDropdown>option{
+
+    }
+
+    
+    .sortDrpdwnDiv{
+        margin: 0px;
+    }
+    #sortDropdown{
+
+    }
+    #sortDropdown{
+        font-size: 12px;
+        width: 120px;
+        height: 35px;
+        font-weight: 500;
+        border: 1px solid rgb(191, 186, 186);
+    }
 
 }
