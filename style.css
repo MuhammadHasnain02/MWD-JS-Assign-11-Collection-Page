@@ -84,6 +84,7 @@
         display: flex;
         flex-direction: column;
         margin-top: 140px;
+        align-items: center;
     }
 
     /* Left Section */
@@ -91,8 +92,9 @@
         background-color: #f3f4f6;
         display: flex;
         flex-wrap: wrap;
-        position: static;
+        position: unset !important;
         flex-direction: row;
+        padding: 0px;
         gap: 10px;
         width: 310px;
         height: auto;
@@ -135,12 +137,12 @@
         font-size: 14px;
         font-weight: 600;
     }
-    .rangSlidDiv{
+    /* .rangSlidDiv{
 
-    }
-    .rangSlidTxtDiv>p{
+    } */
+    /* .rangSlidTxtDiv>p{
 
-    }
+    } */
     .rangSlidTxtDiv>p{
         font-size: 13px;
         font-weight: 500;
@@ -193,10 +195,11 @@
         margin-bottom: 20px;
     }
     .filtChipsDiv>div>p{
+        /* flex-direction: column; */
         font-size: 10px;
         font-weight: 600;
         margin: 9px 0px;
-        flex-direction: column;
+        margin-left: 4px;
     }
     .categChip{
         border: 1px solid black;
